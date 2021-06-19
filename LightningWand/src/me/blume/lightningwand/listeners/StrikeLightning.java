@@ -19,20 +19,23 @@ public class StrikeLightning implements Listener{
 		this.plugin=plugin;
 	}
 	Wand wandClass = new Wand();
-	int radius = plugin.getConfig().getInt("radius");
+	int radius;
 	@EventHandler
 	public void onRightClickWand(PlayerInteractEvent event) {
+		radius=plugin.getConfig().getInt("radius");
 		Player player = event.getPlayer();
 		Location loc = event.getPlayer().getLocation();
 		Action action = event.getAction();
+		if(event.getItem()==null) return;
 		if(action.equals(Action.RIGHT_CLICK_AIR) || action.equals(Action.RIGHT_CLICK_BLOCK)) {
-			if(event.getHand()==EquipmentSlot.HAND) {
+			if(event.getHand().equals(EquipmentSlot.HAND)) {
 				if(event.getItem().isSimilar(wandClass.wandItem())) {
 					for(Player p : Bukkit.getServer().getOnlinePlayers()) {
 						if(p==player) continue;
 						Location loc2 = p.getLocation();
-						if((Math.abs(loc2.getX()-loc.getX())<=radius) && (Math.abs(loc2.getZ()-loc.getZ())<=radius) && (Math.abs(loc2.getY()-loc.getY())<=radius)) {
+						if((Math.abs(loc2.getX()-loc.getX())<=radius) && (Math.abs(loc2.getZ()-loc.getZ())<=radius)&& (Math.abs(loc2.getY()-loc.getY())<=radius) ) {
 							event.getPlayer().getWorld().strikeLightning(loc2);
+							player.sendMessage("Carpti");
 						}
 					}
 				}
