@@ -35,7 +35,6 @@ public class StrikeLightning implements Listener{
 						Location loc2 = p.getLocation();
 						if((Math.abs(loc2.getX()-loc.getX())<=radius) && (Math.abs(loc2.getZ()-loc.getZ())<=radius)&& (Math.abs(loc2.getY()-loc.getY())<=radius) ) {
 							event.getPlayer().getWorld().strikeLightning(loc2);
-							player.sendMessage("Carpti");
 						}
 					}
 				}
