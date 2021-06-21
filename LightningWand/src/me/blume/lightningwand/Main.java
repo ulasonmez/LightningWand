@@ -10,6 +10,7 @@ import me.blume.lightningwand.listeners.StrikeLightning;
 
 public class Main extends JavaPlugin{
 	public HashMap<UUID ,Long> cooldown = new HashMap<UUID, Long>();
+	//getting value from config file
 	public int cooldowntime = getConfig().getInt("cooldown");
 	@Override
 	public void onEnable() {
